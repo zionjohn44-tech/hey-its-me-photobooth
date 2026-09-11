@@ -16,17 +16,3 @@
 3. Choose your **countdown timer** (3 / 5 / 10 seconds) — this starts immediately!
 4. Strike 4 poses — photos are taken automatically
 5. **Save** your photostrip or **Retake**
-
-## 🚀 Running Locally
-
-Just open `index.html` in a browser via a local server (camera requires `localhost` or `https`):
-
-```bash
-python -m http.server 3000
-```
-
-Then open [http://localhost:3000](http://localhost:3000)
-
----
-
-*Luke 24:27 · Deep & Wide · One Love*
