@@ -7,10 +7,45 @@
   <meta name="description" content="HEY IT'S ME Photobooth — capture 4 photos and get your personalised photostrip. By Deep & Wide · One Love." />
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Outfit:wght@300;400;600;700;800&display=swap" rel="stylesheet" />
-  <link rel="stylesheet" href="style.css?v=3" />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Outfit:wght@300;400;600;700;800;900&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="style.css?v=4" />
 </head>
 <body>
+
+  <!-- Ambient Luxury Background Glow & Floating Particles -->
+  <div class="ambient-glow" aria-hidden="true"></div>
+  <div class="ambient-particles" aria-hidden="true">
+    <span class="particle p1"></span>
+    <span class="particle p2"></span>
+    <span class="particle p3"></span>
+    <span class="particle p4"></span>
+    <span class="particle p5"></span>
+  </div>
+
+  <!-- Sound Toggle Button (Floating Top-Right) -->
+  <button id="btn-sound-toggle" class="sound-toggle-btn" onclick="toggleSound()" aria-label="Toggle Sound" title="Sound Effects">
+    <svg id="sound-icon-on" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+      <polygon points="11 5 6 9 2 9 2 15 6 15 11 19 11 5"></polygon>
+      <path d="M19.07 4.93a10 10 0 0 1 0 14.14M15.54 8.46a5 5 0 0 1 0 7.07"></path>
+    </svg>
+    <svg id="sound-icon-off" class="hidden" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+      <polygon points="11 5 6 9 2 9 2 15 6 15 11 19 11 5"></polygon>
+      <line x1="23" y1="9" x2="17" y2="15"></line>
+      <line x1="17" y1="9" x2="23" y2="15"></line>
+    </svg>
+  </button>
+
+  <!-- Confetti Canvas (Celebration on Finish Screen) -->
+  <canvas id="confetti-canvas"></canvas>
+
+  <!-- Download Toast Notification -->
+  <div id="toast" class="toast-notification" aria-live="polite">
+    <div class="toast-icon">✨</div>
+    <div class="toast-text">
+      <p class="toast-title">Photostrip Saved!</p>
+      <p class="toast-sub">Check your downloads folder</p>
+    </div>
+  </div>
 
   <!-- ═══════════════════════════
        SCREEN 1 — WELCOME
@@ -18,21 +53,22 @@
   <section id="screen-welcome" class="screen active">
     <div class="welcome-bg"></div>
     <div class="welcome-content">
-      <div class="brand-eyebrow">Deep &amp; Wide · One Love</div>
+      <div class="brand-eyebrow anim-fade-down">Deep &amp; Wide · One Love</div>
       <h1 class="welcome-title">
-        <span class="hey">HEY</span>
-        <span class="its">IT'S</span>
-        <span class="me">ME</span>
+        <span class="hey anim-title-1">HEY</span>
+        <span class="its anim-title-2">IT'S</span>
+        <span class="me anim-title-3">ME</span>
       </h1>
-      <p class="welcome-sub">PHOTOBOOTH</p>
-      <div class="welcome-divider"></div>
-      <p class="welcome-tagline">Strike a pose. Capture the moment.</p>
-      <button id="btn-start" class="btn-primary" onclick="goToTemplate()">
+      <p class="welcome-sub anim-fade-up">PHOTOBOOTH</p>
+      <div class="welcome-divider anim-scale-x"></div>
+      <p class="welcome-tagline anim-fade-up">Strike a pose. Capture the moment.</p>
+      <button id="btn-start" class="btn-primary anim-btn-in" onclick="goToTemplate()">
+        <span class="btn-shimmer"></span>
         <span>START</span>
         <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="9 18 15 12 9 6"/></svg>
       </button>
     </div>
-    <div class="welcome-footer">Luke 24:27</div>
+    <div class="welcome-footer anim-fade-in">Luke 24:27</div>
   </section>
 
   <!-- ═══════════════════════════
@@ -44,32 +80,39 @@
       <p class="step-eyebrow">STEP 1 OF 2</p>
       <h2 class="step-title">Select Layout</h2>
       <div class="step-title-bar"></div>
+      <p class="step-subtitle">Choose your photostrip design</p>
     </div>
 
     <div class="template-body">
-      <label class="template-card" id="tpl-card-1">
-        <input type="radio" name="template" value="1" checked onchange="selectTemplate(1)" />
+      <label class="template-card" id="tpl-card-1" onclick="selectTemplate(1)">
+        <input type="radio" name="template" value="1" checked />
         <div class="tpl-phone-frame">
           <div class="tpl-phone-notch"></div>
           <div class="tpl-phone-inner">
             <img src="HEY ITS ME PHOTOSTRIP TEMPLATE/VERSION 1.png" alt="Version 1" />
           </div>
         </div>
-        <p class="tpl-name">Version 1</p>
+        <div class="tpl-info">
+          <p class="tpl-name">Version 1</p>
+          <span class="tpl-tag">Classic 4-Grid</span>
+        </div>
         <div class="tpl-check-badge">
           <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg>
         </div>
       </label>
 
-      <label class="template-card" id="tpl-card-2">
-        <input type="radio" name="template" value="2" onchange="selectTemplate(2)" />
+      <label class="template-card" id="tpl-card-2" onclick="selectTemplate(2)">
+        <input type="radio" name="template" value="2" />
         <div class="tpl-phone-frame">
           <div class="tpl-phone-notch"></div>
           <div class="tpl-phone-inner">
             <img src="HEY ITS ME PHOTOSTRIP TEMPLATE/VERSION 2.png" alt="Version 2" />
           </div>
         </div>
-        <p class="tpl-name">Version 2</p>
+        <div class="tpl-info">
+          <p class="tpl-name">Version 2</p>
+          <span class="tpl-tag">Modern Split</span>
+        </div>
         <div class="tpl-check-badge">
           <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg>
         </div>
@@ -78,6 +121,7 @@
 
     <div class="screen-footer">
       <button class="btn-primary btn-wide" onclick="goToTimer()">
+        <span class="btn-shimmer"></span>
         <span>CONTINUE</span>
         <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="9 18 15 12 9 6"/></svg>
       </button>
@@ -99,14 +143,17 @@
     <div class="timer-body">
       <div class="timer-options">
         <button class="timer-tile" id="timer-tile-3" onclick="selectTimerAndStart(3)">
+          <span class="timer-badge">QUICK</span>
           <div class="timer-tile-number">3</div>
           <div class="timer-tile-label">SECS</div>
         </button>
         <button class="timer-tile" id="timer-tile-5" onclick="selectTimerAndStart(5)">
+          <span class="timer-badge recommended">POPULAR</span>
           <div class="timer-tile-number">5</div>
           <div class="timer-tile-label">SECS</div>
         </button>
         <button class="timer-tile" id="timer-tile-10" onclick="selectTimerAndStart(10)">
+          <span class="timer-badge">GROUP</span>
           <div class="timer-tile-number">10</div>
           <div class="timer-tile-label">SECS</div>
         </button>
@@ -119,6 +166,7 @@
         <span>BACK</span>
       </button>
       <button class="btn-primary btn-ready" onclick="selectTimerAndStart(state ? state.selectedTimer : 5)">
+        <span class="btn-shimmer"></span>
         <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M23 19a2 2 0 0 1-2 2H3a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h4l2-3h6l2 3h4a2 2 0 0 1 2 2z"/><circle cx="12" cy="13" r="4"/></svg>
         <span>READY!</span>
       </button>
@@ -147,8 +195,15 @@
       <div class="vf-corner tr"></div>
       <div class="vf-corner bl"></div>
       <div class="vf-corner br"></div>
+      <div class="vf-grid-lines">
+        <span class="vf-line horizontal"></span>
+        <span class="vf-line vertical"></span>
+      </div>
       <div id="countdown-overlay" class="countdown-overlay hidden">
-        <span id="countdown-number"></span>
+        <div class="countdown-pill">
+          <span class="countdown-pulse-ring"></span>
+          <span id="countdown-number"></span>
+        </div>
       </div>
       <div id="flash-overlay" class="flash-overlay hidden"></div>
     </div>
@@ -169,9 +224,10 @@
 
     <div class="finish-screen-inner">
 
-      <!-- Left: strip preview -->
+      <!-- Left: strip preview with 3D tilt -->
       <div class="finish-strip-col">
-        <div class="finish-strip-shadow">
+        <div class="finish-strip-shadow strip-tilt-container" id="strip-container">
+          <div class="strip-gloss-sheen"></div>
           <canvas id="strip-canvas"></canvas>
         </div>
       </div>
@@ -185,6 +241,7 @@
 
         <div class="finish-btns">
           <button id="btn-save" class="btn-finish-save" onclick="saveStrip()">
+            <span class="btn-shimmer"></span>
             <svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="7 10 12 15 17 10"/><line x1="12" y1="15" x2="12" y2="3"/></svg>
             <span>DOWNLOAD &amp; SAVE</span>
           </button>
