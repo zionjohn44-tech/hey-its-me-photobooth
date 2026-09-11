@@ -508,10 +508,13 @@ html, body {
   flex-direction: row;
   align-items: center;
   justify-content: center;
-  gap: 32px;
-  padding: 24px 28px;
+  gap: 40px;
+  padding: 24px 48px;
   overflow: hidden;
   min-height: 0;
+  max-width: 860px;
+  margin: 0 auto;
+  width: 100%;
 }
 
 /* Left column: strip preview */
@@ -543,6 +546,7 @@ html, body {
   align-items: flex-start;
   gap: 10px;
   min-width: 0;
+  max-width: 380px;
 }
 
 .finish-eyebrow {
