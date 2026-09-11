@@ -445,23 +445,25 @@ html, body {
 .vf-corner.br { bottom: 12px; right: 12px; border-bottom: 2px solid var(--gold); border-right: 2px solid var(--gold);border-radius: 0 0 3px 0; }
 
 .countdown-overlay {
-  position: absolute; inset: 0; z-index: 5;
+  position: absolute; 
+  top: 16px; left: 0; right: 0; 
+  z-index: 5;
   display: flex; align-items: center; justify-content: center;
-  background: rgba(0,0,0,0.5);
-  backdrop-filter: blur(2px);
+  pointer-events: none;
 }
 .countdown-overlay.hidden { display: none; }
 #countdown-number {
-  font-size: clamp(5rem, 22vw, 9rem);
-  font-weight: 800; color: var(--gold); line-height: 1;
-  text-shadow: 0 0 50px rgba(212,168,71,0.7);
-  animation: pulse-count 1s ease-in-out;
+  font-size: 2.2rem;
+  font-weight: 800; color: var(--deep); line-height: 1;
+  background: var(--gold);
+  padding: 8px 24px;
+  border-radius: 50px;
+  box-shadow: 0 8px 24px rgba(0,0,0,0.6);
+  animation: pop-count 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275);
 }
-@keyframes pulse-count {
-  0%   { transform: scale(1.4); opacity: 0; }
-  15%  { opacity: 1; }
-  85%  { transform: scale(1); opacity: 1; }
-  100% { transform: scale(0.7); opacity: 0; }
+@keyframes pop-count {
+  0%   { transform: scale(0.5); opacity: 0; }
+  100% { transform: scale(1); opacity: 1; }
 }
 
 .flash-overlay {
