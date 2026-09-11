@@ -50,6 +50,8 @@ function goToTemplate() {
 
 function goToTimer() {
   showScreen('timer');
+  // Highlight the currently selected timer
+  highlightTimer(state.selectedTimer);
 }
 
 function retake() {
@@ -75,25 +77,30 @@ selectTemplate(1);
 /* ──────────────────────────────────────────────────────
    TIMER SELECTION → AUTO-START
 ────────────────────────────────────────────────────── */
-async function selectTimerAndStart(seconds) {
+function highlightTimer(seconds) {
+  document.querySelectorAll('.timer-tile').forEach(t => t.classList.remove('active-selection'));
+  const tile = document.getElementById(`timer-tile-${seconds}`);
+  if (tile) tile.classList.add('active-selection');
   state.selectedTimer = seconds;
+}
+
+async function selectTimerAndStart(seconds) {
+  highlightTimer(seconds);
   state.capturedPhotos = [];
   state.currentShot = 0;
   resetThumbnails();
   updateShotUI();
 
-  // Animate the selected tile briefly
-  const tile = $(`timer-tile-${seconds}`);
-  tile.style.background = 'rgba(212,168,71,0.2)';
-  tile.style.borderColor = 'var(--gold)';
-  tile.style.transform = 'scale(0.96)';
-
-  await sleep(180);
+  // Brief visual feedback on tile
+  const tile = document.getElementById(`timer-tile-${seconds}`);
+  if (tile) {
+    tile.style.transform = 'scale(0.94)';
+    await sleep(140);
+    tile.style.transform = '';
+  }
 
   showScreen('camera');
   await startCamera();
-
-  // Small delay to let camera warm up
   await sleep(800);
   runAutoSession();
 }

@@ -39,48 +39,46 @@
        SCREEN 2 — CHOOSE TEMPLATE
   ═══════════════════════════ -->
   <section id="screen-template" class="screen">
-    <header class="app-header">
-      <button class="btn-back" onclick="goToWelcome()">
-        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="15 18 9 12 15 6"/></svg>
-      </button>
-      <span class="header-title">SELECT YOUR PHOTOSTRIP DESIGN</span>
-      <span class="step-dot-wrap">
-        <span class="step-dot active"></span>
-        <span class="step-dot"></span>
-      </span>
-    </header>
+
+    <div class="step-screen-header">
+      <p class="step-eyebrow">STEP 1 OF 2</p>
+      <h2 class="step-title">Select Layout</h2>
+      <div class="step-title-bar"></div>
+    </div>
 
     <div class="template-body">
       <label class="template-card" id="tpl-card-1">
         <input type="radio" name="template" value="1" checked onchange="selectTemplate(1)" />
-        <div class="tpl-frame">
-          <img src="HEY ITS ME PHOTOSTRIP TEMPLATE/VERSION 1.png" alt="Version 1" />
-        </div>
-        <div class="tpl-label">
-          <span class="tpl-num">Version 1</span>
-          <div class="tpl-check-icon">
-            <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg>
+        <div class="tpl-phone-frame">
+          <div class="tpl-phone-notch"></div>
+          <div class="tpl-phone-inner">
+            <img src="HEY ITS ME PHOTOSTRIP TEMPLATE/VERSION 1.png" alt="Version 1" />
           </div>
+        </div>
+        <p class="tpl-name">Version 1</p>
+        <div class="tpl-check-badge">
+          <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg>
         </div>
       </label>
 
       <label class="template-card" id="tpl-card-2">
         <input type="radio" name="template" value="2" onchange="selectTemplate(2)" />
-        <div class="tpl-frame">
-          <img src="HEY ITS ME PHOTOSTRIP TEMPLATE/VERSION 2.png" alt="Version 2" />
-        </div>
-        <div class="tpl-label">
-          <span class="tpl-num">Version 2</span>
-          <div class="tpl-check-icon">
-            <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg>
+        <div class="tpl-phone-frame">
+          <div class="tpl-phone-notch"></div>
+          <div class="tpl-phone-inner">
+            <img src="HEY ITS ME PHOTOSTRIP TEMPLATE/VERSION 2.png" alt="Version 2" />
           </div>
+        </div>
+        <p class="tpl-name">Version 2</p>
+        <div class="tpl-check-badge">
+          <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg>
         </div>
       </label>
     </div>
 
     <div class="screen-footer">
-      <button class="btn-primary" onclick="goToTimer()">
-        <span>NEXT</span>
+      <button class="btn-primary btn-wide" onclick="goToTimer()">
+        <span>CONTINUE</span>
         <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="9 18 15 12 9 6"/></svg>
       </button>
     </div>
@@ -90,34 +88,40 @@
        SCREEN 3 — CHOOSE TIMER
   ═══════════════════════════ -->
   <section id="screen-timer" class="screen">
-    <header class="app-header">
-      <button class="btn-back" onclick="goToTemplate()">
-        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="15 18 9 12 15 6"/></svg>
-      </button>
-      <span class="header-title">SELECT COUNTDOWN TIMER</span>
-      <span class="step-dot-wrap">
-        <span class="step-dot"></span>
-        <span class="step-dot active"></span>
-      </span>
-    </header>
+
+    <div class="step-screen-header">
+      <p class="step-eyebrow">STEP 2 OF 2</p>
+      <h2 class="step-title">Choose Countdown</h2>
+      <div class="step-title-bar"></div>
+      <p class="step-subtitle">How many seconds before each shot?</p>
+    </div>
 
     <div class="timer-body">
-      <p class="timer-hint">Choose how many seconds before each photo is taken.<br>Tap a timer to begin immediately!</p>
-
       <div class="timer-options">
         <button class="timer-tile" id="timer-tile-3" onclick="selectTimerAndStart(3)">
           <div class="timer-tile-number">3</div>
-          <div class="timer-tile-label">seconds</div>
+          <div class="timer-tile-label">SECS</div>
         </button>
         <button class="timer-tile" id="timer-tile-5" onclick="selectTimerAndStart(5)">
           <div class="timer-tile-number">5</div>
-          <div class="timer-tile-label">seconds</div>
+          <div class="timer-tile-label">SECS</div>
         </button>
         <button class="timer-tile" id="timer-tile-10" onclick="selectTimerAndStart(10)">
           <div class="timer-tile-number">10</div>
-          <div class="timer-tile-label">seconds</div>
+          <div class="timer-tile-label">SECS</div>
         </button>
       </div>
+    </div>
+
+    <div class="screen-footer timer-footer">
+      <button class="btn-secondary btn-back-action" onclick="goToTemplate()">
+        <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="15 18 9 12 15 6"/></svg>
+        <span>BACK</span>
+      </button>
+      <button class="btn-primary btn-ready" onclick="selectTimerAndStart(state ? state.selectedTimer : 5)">
+        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M23 19a2 2 0 0 1-2 2H3a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h4l2-3h6l2 3h4a2 2 0 0 1 2 2z"/><circle cx="12" cy="13" r="4"/></svg>
+        <span>READY!</span>
+      </button>
     </div>
   </section>
 
@@ -162,27 +166,39 @@
        SCREEN 5 — FINISH
   ═══════════════════════════ -->
   <section id="screen-finish" class="screen">
-    <header class="app-header">
-      <span></span>
-      <span class="header-title">YOUR PHOTOSTRIP</span>
-      <span></span>
-    </header>
 
-    <div class="finish-body">
-      <div class="photostrip-wrap">
-        <canvas id="strip-canvas"></canvas>
+    <div class="finish-screen-inner">
+
+      <!-- Left: strip preview -->
+      <div class="finish-strip-col">
+        <div class="finish-strip-shadow">
+          <canvas id="strip-canvas"></canvas>
+        </div>
       </div>
-    </div>
 
-    <div class="screen-footer finish-footer">
-      <button id="btn-retake" class="btn-secondary" onclick="retake()">
-        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="1 4 1 10 7 10"/><path d="M3.51 15a9 9 0 1 0 .49-3.5"/></svg>
-        <span>RETAKE</span>
-      </button>
-      <button id="btn-save" class="btn-primary" onclick="saveStrip()">
-        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="7 10 12 15 17 10"/><line x1="12" y1="15" x2="12" y2="3"/></svg>
-        <span>SAVE</span>
-      </button>
+      <!-- Right: actions -->
+      <div class="finish-actions-col">
+        <p class="finish-eyebrow">ALMOST THERE!</p>
+        <h2 class="finish-title">Your Photostrip</h2>
+        <div class="step-title-bar"></div>
+        <p class="finish-subtitle">Happy with it?<br><span>Download your memory or retake your shots.</span></p>
+
+        <div class="finish-btns">
+          <button id="btn-save" class="btn-finish-save" onclick="saveStrip()">
+            <svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="7 10 12 15 17 10"/><line x1="12" y1="15" x2="12" y2="3"/></svg>
+            <span>DOWNLOAD &amp; SAVE</span>
+          </button>
+          <button id="btn-retake" class="btn-finish-retake" onclick="retake()">
+            <svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="1 4 1 10 7 10"/><path d="M3.51 15a9 9 0 1 0 .49-3.5"/></svg>
+            <span>RETAKE</span>
+          </button>
+          <button class="btn-finish-settings" onclick="goToTemplate()">
+            <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="15 18 9 12 15 6"/></svg>
+            <span>BACK TO SETTINGS</span>
+          </button>
+        </div>
+      </div>
+
     </div>
   </section>
 
