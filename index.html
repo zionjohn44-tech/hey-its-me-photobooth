@@ -1,0 +1,191 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>HEY IT'S ME — Photobooth · Deep & Wide · One Love</title>
+  <meta name="description" content="HEY IT'S ME Photobooth — capture 4 photos and get your personalised photostrip. By Deep & Wide · One Love." />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Outfit:wght@300;400;600;700;800&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+
+  <!-- ═══════════════════════════
+       SCREEN 1 — WELCOME
+  ═══════════════════════════ -->
+  <section id="screen-welcome" class="screen active">
+    <div class="welcome-bg"></div>
+    <div class="welcome-content">
+      <div class="brand-eyebrow">Deep &amp; Wide · One Love</div>
+      <h1 class="welcome-title">
+        <span class="hey">HEY</span>
+        <span class="its">IT'S</span>
+        <span class="me">ME</span>
+      </h1>
+      <p class="welcome-sub">PHOTOBOOTH</p>
+      <div class="welcome-divider"></div>
+      <p class="welcome-tagline">Strike a pose. Capture the moment.</p>
+      <button id="btn-start" class="btn-primary" onclick="goToTemplate()">
+        <span>START</span>
+        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="9 18 15 12 9 6"/></svg>
+      </button>
+    </div>
+    <div class="welcome-footer">Luke 24:27</div>
+  </section>
+
+  <!-- ═══════════════════════════
+       SCREEN 2 — CHOOSE TEMPLATE
+  ═══════════════════════════ -->
+  <section id="screen-template" class="screen">
+    <header class="app-header">
+      <button class="btn-back" onclick="goToWelcome()">
+        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="15 18 9 12 15 6"/></svg>
+      </button>
+      <span class="header-title">SELECT YOUR PHOTOSTRIP DESIGN</span>
+      <span class="step-dot-wrap">
+        <span class="step-dot active"></span>
+        <span class="step-dot"></span>
+      </span>
+    </header>
+
+    <div class="template-body">
+      <label class="template-card" id="tpl-card-1">
+        <input type="radio" name="template" value="1" checked onchange="selectTemplate(1)" />
+        <div class="tpl-frame">
+          <img src="HEY ITS ME PHOTOSTRIP TEMPLATE/VERSION 1.png" alt="Version 1" />
+        </div>
+        <div class="tpl-label">
+          <span class="tpl-num">Version 1</span>
+          <div class="tpl-check-icon">
+            <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg>
+          </div>
+        </div>
+      </label>
+
+      <label class="template-card" id="tpl-card-2">
+        <input type="radio" name="template" value="2" onchange="selectTemplate(2)" />
+        <div class="tpl-frame">
+          <img src="HEY ITS ME PHOTOSTRIP TEMPLATE/VERSION 2.png" alt="Version 2" />
+        </div>
+        <div class="tpl-label">
+          <span class="tpl-num">Version 2</span>
+          <div class="tpl-check-icon">
+            <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg>
+          </div>
+        </div>
+      </label>
+    </div>
+
+    <div class="screen-footer">
+      <button class="btn-primary" onclick="goToTimer()">
+        <span>NEXT</span>
+        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="9 18 15 12 9 6"/></svg>
+      </button>
+    </div>
+  </section>
+
+  <!-- ═══════════════════════════
+       SCREEN 3 — CHOOSE TIMER
+  ═══════════════════════════ -->
+  <section id="screen-timer" class="screen">
+    <header class="app-header">
+      <button class="btn-back" onclick="goToTemplate()">
+        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="15 18 9 12 15 6"/></svg>
+      </button>
+      <span class="header-title">SELECT COUNTDOWN TIMER</span>
+      <span class="step-dot-wrap">
+        <span class="step-dot"></span>
+        <span class="step-dot active"></span>
+      </span>
+    </header>
+
+    <div class="timer-body">
+      <p class="timer-hint">Choose how many seconds before each photo is taken.<br>Tap a timer to begin immediately!</p>
+
+      <div class="timer-options">
+        <button class="timer-tile" id="timer-tile-3" onclick="selectTimerAndStart(3)">
+          <div class="timer-tile-number">3</div>
+          <div class="timer-tile-label">seconds</div>
+        </button>
+        <button class="timer-tile" id="timer-tile-5" onclick="selectTimerAndStart(5)">
+          <div class="timer-tile-number">5</div>
+          <div class="timer-tile-label">seconds</div>
+        </button>
+        <button class="timer-tile" id="timer-tile-10" onclick="selectTimerAndStart(10)">
+          <div class="timer-tile-number">10</div>
+          <div class="timer-tile-label">seconds</div>
+        </button>
+      </div>
+    </div>
+  </section>
+
+  <!-- ═══════════════════════════
+       SCREEN 4 — CAMERA
+  ═══════════════════════════ -->
+  <section id="screen-camera" class="screen">
+    <div class="camera-hud">
+      <div class="shot-progress">
+        <div class="shot-dot" id="dot-1"></div>
+        <div class="shot-dot" id="dot-2"></div>
+        <div class="shot-dot" id="dot-3"></div>
+        <div class="shot-dot" id="dot-4"></div>
+      </div>
+      <p class="shot-label">Photo <span id="shot-num">1</span> of 4</p>
+    </div>
+
+    <!-- Viewfinder -->
+    <div class="viewfinder-wrap">
+      <video id="camera-feed" autoplay playsinline muted></video>
+      <canvas id="snap-canvas" style="display:none;"></canvas>
+      <div class="vf-corner tl"></div>
+      <div class="vf-corner tr"></div>
+      <div class="vf-corner bl"></div>
+      <div class="vf-corner br"></div>
+      <div id="countdown-overlay" class="countdown-overlay hidden">
+        <span id="countdown-number"></span>
+      </div>
+      <div id="flash-overlay" class="flash-overlay hidden"></div>
+    </div>
+
+    <!-- Thumbnails -->
+    <div class="thumbnails-row">
+      <div class="thumb-slot" id="thumb-1"><span class="thumb-empty">1</span></div>
+      <div class="thumb-slot" id="thumb-2"><span class="thumb-empty">2</span></div>
+      <div class="thumb-slot" id="thumb-3"><span class="thumb-empty">3</span></div>
+      <div class="thumb-slot" id="thumb-4"><span class="thumb-empty">4</span></div>
+    </div>
+  </section>
+
+  <!-- ═══════════════════════════
+       SCREEN 5 — FINISH
+  ═══════════════════════════ -->
+  <section id="screen-finish" class="screen">
+    <header class="app-header">
+      <span></span>
+      <span class="header-title">YOUR PHOTOSTRIP</span>
+      <span></span>
+    </header>
+
+    <div class="finish-body">
+      <div class="photostrip-wrap">
+        <canvas id="strip-canvas"></canvas>
+      </div>
+    </div>
+
+    <div class="screen-footer finish-footer">
+      <button id="btn-retake" class="btn-secondary" onclick="retake()">
+        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="1 4 1 10 7 10"/><path d="M3.51 15a9 9 0 1 0 .49-3.5"/></svg>
+        <span>RETAKE</span>
+      </button>
+      <button id="btn-save" class="btn-primary" onclick="saveStrip()">
+        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="7 10 12 15 17 10"/><line x1="12" y1="15" x2="12" y2="3"/></svg>
+        <span>SAVE</span>
+      </button>
+    </div>
+  </section>
+
+  <script src="app.js"></script>
+</body>
+</html>
